@@ -9,6 +9,10 @@ gem "pg", "~> 1.1"
 
 gem "puma", "~> 5.0"
 
+gem 'dotenv-rails', groups: %i[development test]
+
+gem 'httparty'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
