@@ -26,6 +26,6 @@ set :environment, ENV.fetch('RAILS_ENV', 'development')
 set :output, 'log/cron.log'
 
 # Запуск задачи каждую минуту
-every 1.minute do
+every 30.minutes do
   runner 'FetchWeatherJob.perform_later'
 end

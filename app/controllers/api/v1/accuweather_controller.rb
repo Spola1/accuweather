@@ -2,27 +2,37 @@ module Api
   module V1
     class AccuweatherController < ApplicationController
       def current
-        temperature = Forecast.current_temperature
+        temperature = Rails.cache.fetch('current_temperature', expires_in: 30.minutes) do
+          Forecast.current_temperature
+        end
         render json: { temperature: temperature }
       end
 
       def historical
-        temperatures = Forecast.historical.pluck(:temperature)
+        temperatures = Rails.cache.fetch('historical_temperatures', expires_in: 30.minutes) do
+          Forecast.historical.pluck(:temperature)
+        end
         render json: { temperatures: temperatures }
       end
 
       def historical_max
-        temperature = Forecast.historical_max
+        temperature = Rails.cache.fetch('historical_max_temperature', expires_in: 30.minutes) do
+          Forecast.historical_max
+        end
         render json: { temperature: temperature }
       end
 
       def historical_min
-        temperature = Forecast.historical_min
+        temperature = Rails.cache.fetch('historical_min_temperature', expires_in: 30.minutes) do
+          Forecast.historical_min
+        end
         render json: { temperature: temperature }
       end
 
       def historical_avg
-        temperature = Forecast.historical_avg
+        temperature = Rails.cache.fetch('historical_avg_temperature', expires_in: 30.minutes) do
+          Forecast.historical_avg
+        end
         render json: { temperature: temperature }
       end
 
@@ -32,7 +42,9 @@ module Api
 
       def by_time
         timestamp = params[:timestamp].to_i
-        forecast = Forecast.find_by_closest_time(timestamp)
+        forecast = Rails.cache.fetch("forecast_#{timestamp}", expires_in: 30.minutes) do
+          Forecast.find_by_closest_time(timestamp)
+        end
 
         if forecast.present?
           render json: { temperature: forecast.temperature }
