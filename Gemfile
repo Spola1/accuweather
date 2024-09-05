@@ -24,7 +24,7 @@ gem 'delayed_job_active_record'
 
 gem 'daemons'
 
-gem 'whenever', require: false
+gem 'rufus-scheduler'
 
 gem 'rswag'
 gem 'rswag-api'
