@@ -17,6 +17,8 @@ class AccuweatherService < ApplicationService
   end
 
   def parsed_response
-    @parsed_response ||= HTTParty.get(api_url, query: { apikey: API_KEY }).parsed_response
+    @parsed_response ||= Rails.cache.fetch("accuweather_response", expires_in: 30.minutes) do
+      HTTParty.get(api_url, query: { apikey: API_KEY }).parsed_response
+    end
   end
 end

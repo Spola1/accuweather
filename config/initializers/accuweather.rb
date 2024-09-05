@@ -1,3 +1,3 @@
 Rails.application.config.after_initialize do
-  FetchWeatherJob.perform_later if Rails.env.development?
+  FetchWeatherJob.perform_now if Rails.env.development?
 end
