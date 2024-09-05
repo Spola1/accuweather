@@ -35,7 +35,7 @@ RSpec.describe 'api/v1/accuweather', type: :request do
   path '/weather/historical/avg' do
     get('historical_avg accuweather') do
       response(200, 'successful') do
-        let(:expected_response) { { temperature: 15.0 }.to_json }
+        let(:expected_response) { { temperature: '15.0' }.to_json }
 
         run_test! do |response|
           expect(response.body).to eq(expected_response)

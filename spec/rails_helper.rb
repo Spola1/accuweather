@@ -8,6 +8,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
 require 'rspec/rails'
+require 'vcr'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -65,4 +67,13 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr/cassettes'
+  config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = false
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data('<API_KEY>') { ENV['API_KEY'] }
+  config.filter_sensitive_data('<LOCATION_KEY>') { ENV['LOCATION_KEY'] }
 end
