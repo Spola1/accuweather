@@ -1,18 +1,18 @@
 .env 
 
-ACCUWEATHER_TOKEN=bRMTOFQMfAEXxvzMrItkGFdUiKeeZG0A
-LOCATION_KEY=28801
+- ACCUWEATHER_TOKEN=bRMTOFQMfAEXxvzMrItkGFdUiKeeZG0A
+- LOCATION_KEY=28801
 
-bundle install
-rails db:create && db:migrate
-rails s
+- bundle install
+- rails db:create && db:migrate
+- rails s
 
-✅ ruby 3.1.2, rails 7
-✅ rufus for scheduled task
-✅ swagger
-✅ rspec, vcr
-✅ redis for caching
-✅ delayed job (active record)
+- ✅ ruby 3.1.2, rails 7
+- ✅ rufus for scheduled task
+- ✅ swagger
+- ✅ rspec, vcr
+- ✅ redis for caching
+- ✅ delayed job (active record)
 
 #### Endpoints:
 - http://0.0.0.0:3000/health
