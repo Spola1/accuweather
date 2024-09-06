@@ -1,3 +1,12 @@
+.env 
+
+ACCUWEATHER_TOKEN=bRMTOFQMfAEXxvzMrItkGFdUiKeeZG0A
+LOCATION_KEY=28801
+
+bundle install
+rails db:create && db:migrate
+rails s
+
 ✅ ruby 3.1.2, rails 7
 ✅ rufus for scheduled task
 ✅ swagger
