@@ -1,24 +1,15 @@
-# README
+✅ ruby 3.1.2, rails 7
+✅ rufus for scheduled task
+✅ swagger
+✅ rspec, vcr
+✅ redis for caching
+✅ delayed job (active record)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Endpoints:
+- http://0.0.0.0:3000/health
+- http://0.0.0.0:3000/weather/historical/max
+- http://0.0.0.0:3000/weather/historical/min
+- http://0.0.0.0:3000/weather/historical/avg
+- http://0.0.0.0:3000/weather/current
+- http://0.0.0.0:3000/weather/historical
+- http://0.0.0.0:3000/weather/by_time?timestamp=value
