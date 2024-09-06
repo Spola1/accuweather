@@ -1,3 +1,6 @@
 Rails.application.config.after_initialize do
-  FetchWeatherJob.perform_now if Rails.env.development?
+  if Rails.env.development?
+    Rails.cache.delete("accuweather_response")
+    FetchWeatherJob.perform_now
+  end
 end
