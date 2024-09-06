@@ -3,9 +3,13 @@
 - ACCUWEATHER_TOKEN=bRMTOFQMfAEXxvzMrItkGFdUiKeeZG0A
 - LOCATION_KEY=28801
 
+application launch
+
 - bundle install
 - rails db:create && db:migrate
 - rails s
+
+technologies
 
 - ✅ ruby 3.1.2, rails 7
 - ✅ rufus for scheduled task
